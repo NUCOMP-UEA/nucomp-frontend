@@ -1,0 +1,24 @@
+/* Quando trabalha com modules css, tende-se a usar apenas classes e não id ou nenhum tipo de seleção css */
+.header {
+    background: var(--blue-600);
+    display: flex;
+    padding: 1.25rem 4rem;
+    justify-content: left;
+    align-items: center;
+    color: #fff;
+    font-size: 2rem;
+}
+
+.hcontent {
+    width: 734px;
+    height: 93px;
+    font-family: "Inter", sans-serif;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: -0.019em;
+    text-align: left;
+    color: white;
+  }

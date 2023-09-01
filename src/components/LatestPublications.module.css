@@ -1,0 +1,120 @@
+.morePublicationsButton {
+  display: flex;
+  height: 101px;
+  align-items: center;
+  justify-content: end;
+  flex-shrink: 0;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+
+.morePublicationsIcon {
+  background: #0F7C94;
+  font-size: 24px;
+  height: 101px;
+  width: 98px;  
+  color: #214A53; 
+  font-size: 45px; 
+  font-weight: 600; 
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  /* margin-left: 10px; */
+}
+
+.morePublicationsText {
+  width: 351px;
+  background: #85B0B9;
+  padding: 10px;
+  height: 101px;
+  font-size: 45px; 
+  font-weight: 600; 
+  display: flex;
+  align-items: center;
+  color: #214A53; 
+  padding-left: 19px;
+}
+
+
+.latestPublicationsTitle {
+    /* margin-left: 117px; */
+    width: 912px;
+    height: 61px;
+    color: #3C97AB;
+    font-family: "Inter", sans-serif;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 60px;
+    flex-shrink: 0;
+    margin-bottom: 96px;
+  }
+  
+  .latestPublicationAuthors {
+    color: #85B0B9;
+    font-family: "Inter", sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 50px;
+  }
+
+  .latestPublicationTitle {
+    color: #214A53;
+    font-family: "Inter", sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 50px;
+  }
+
+  .latestPublicationVenue {
+    color: #85B0B9;
+    font-family: "Inter", sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 50px;
+  }
+
+  .latestPublicationsList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap; /* Evitar que os itens sejam empurrados para cima */
+  }
+  
+.latestPublication {
+    color: #85B0B9; 
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 50px;
+    display: flex;
+    margin-bottom: 80px;
+    align-items: center; /* Centraliza verticalmente o ícone e o texto */
+    /* margin-left: 211px; Distância da borda esquerda para o texto */
+  }
+  
+
+.latestPublicationsContainer {
+
+  }
+  
+.scrollIcon {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    margin-right: 31px; /* Distância do ícone para o texto */
+  }
+
+.publicationText {
+    /* Estilos para o texto */
+    text-align: left; /* Alinhamento à esquerda */
+  }
+
+.latestPublicationText {
+    display: inline;
+  }
+
+.latestPublicationIcon {
+  margin-right: 31px;
+}

@@ -1,0 +1,115 @@
+/* .newsContainer {
+    width: 2202px;
+  }
+   */
+  .newsTitle {
+    width: 912px;
+    height: 60px;
+    font-family: "Inter", sans-serif;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 60px;
+    text-align: left;
+    margin-left: 115px;  /* Distância da borda esquerda */
+    margin-top: 50px;    /* Distância do header */
+    margin-bottom: 58px; /* Distância até o card de notícias */
+  }
+  
+  .newsCard {
+    height: 678px;
+    background: #214A53;
+    display: flex;
+    flex-direction: row;
+    
+  }
+  
+  .newsImage {
+    width: 1024px;
+    height: 683px;
+    background-size: cover;
+    background-image: url('../assets/news.png'); /* Substitua pelo caminho da sua imagem */ 
+    margin-left: 116px; /* Distância da borda lateral esquerda */
+    margin-top: 120px;  /* Distância da borda superior */
+}
+  
+  .newsContent {
+    width: 912px;
+    height: 510px;
+    color: var(--white);
+    text-align: left;
+    margin-left: 55px;  /* Distância horizontal entre a imagem e o texto */
+    margin-top: 134px;  /* Distância da borda superior do card */
+  }
+  
+  .newsContent h2 {
+    font-size: 60px;
+  }
+  
+  .newsDate {
+    margin-top: 46px;  /* Distância acima da data */
+    margin-bottom: 46px;  /* Distância abaixo da data */
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 60px;
+    text-align: left;
+  }
+
+  .newsParagraph {
+    margin-bottom: 10px;  /* Espaçamento entre os parágrafos */
+    font-family: "Inter", sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 60px;
+    text-align: left;
+  }
+  
+  .newsContent p {
+    font-size: 30px;
+    font-weight: 500;
+  }
+
+  h2 { 
+    font-size: 40px;
+  }
+
+
+  .morePublicationsButton {
+    display: flex;
+    height: 101px;
+    align-items: center;
+    justify-content: end;
+    flex-shrink: 0;
+    margin-top: 30px;
+    margin-right: 26px;
+    cursor: pointer;
+  }
+  
+  
+  .morePublicationsIcon {
+    background: #0F7C94;
+    font-size: 24px;
+    height: 101px;
+    width: 98px;  
+    color: #214A53; 
+    font-size: 45px; 
+    font-weight: 600; 
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    /* margin-left: 10px; */
+  }
+  
+  .morePublicationsText {
+    width: 351px;
+    background: #85B0B9;
+    padding: 10px;
+    height: 101px;
+    font-size: 45px; 
+    font-weight: 600; 
+    display: flex;
+    align-items: center;
+    color: #214A53; 
+    padding-left: 19px;
+  }
+  
