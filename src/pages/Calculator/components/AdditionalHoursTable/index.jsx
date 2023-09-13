@@ -1,15 +1,17 @@
-import { useMemo, useState } from 'react';
-import { AdditionalHeader, Container, TableHeader } from './styles';
-import * as Icon from '../icons';
-import { ButtonCheckHeader } from './ButtonCheck';
-import { Row } from './Row';
-import { rowsMock } from '../../constants/Rows';
-import { AdditionalSearch } from './AdditionalSearch';
-import { Pagination } from '../Pagination';
-// import { CreateActivityModal } from '../CreateActivityModal';
+import { useMemo, useState } from "react";
+import { AdditionalHeader, Container, TableHeader } from "./styles";
+import * as Icon from "../icons";
+import { ButtonCheckHeader } from "./ButtonCheck";
+import { Row } from "./Row";
+import { rowsMock } from "../../constants/Rows";
+import { AdditionalSearch } from "./AdditionalSearch";
+import { Pagination } from "../Pagination";
+import { CreateActivityModal } from "../CreateActivityModal";
 
 export const AdditionalHoursTable = () => {
   const [allTableChecked, setAllTableChecked] = useState(false);
+  const [showCreateActivityModal, setShowCreateActivityModal] = useState(false);
+
   const [rows, setRows] = useState(rowsMock);
 
   const atLeastOneRowSelected = useMemo(() => {
@@ -39,7 +41,12 @@ export const AdditionalHoursTable = () => {
     <Container>
       <AdditionalHeader>
         <AdditionalSearch />
-        <button className="plus-activity">+ Atividade</button>
+        <button
+          className="plus-activity"
+          onClick={() => setShowCreateActivityModal(true)}
+        >
+          + Atividade
+        </button>
       </AdditionalHeader>
       <TableHeader selected={allTableChecked}>
         <div className="selected"></div>
@@ -60,6 +67,11 @@ export const AdditionalHoursTable = () => {
       </TableHeader>
       <Row rows={rows} onClickCheck={onCheckRow} />
       <Pagination firstItem={1} lastItem={10} totalItems={230} />
+      {showCreateActivityModal ? (
+        <CreateActivityModal
+          onClose={() => setShowCreateActivityModal(false)}
+        />
+      ) : null}
     </Container>
   );
 };
