@@ -4,7 +4,7 @@ import { Faq } from "./components/Faq";
 import { Stepper } from "./components/Stepper";
 
 const Calculator = () => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(2);
 
   return (
     <Container>

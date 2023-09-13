@@ -5,7 +5,7 @@ export const rowsMock = [
     category: 'Categoria 1',
     chDone: '30',
     chUp: '14',
-    data: new Date(),
+    date: new Date(),
     institution: 'Instituicao 1',
     isChecked: false,
   },
