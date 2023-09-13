@@ -16,6 +16,7 @@ export const Container = styled.div`
     font-style: normal;
     font-weight: 800;
     line-height: normal;
+    margin-bottom: 16px;
   }
 
   form.form {
@@ -35,6 +36,12 @@ export const Container = styled.div`
     cursor: pointer;
 
     color: #fff;
+
+    &:disabled {
+      background-color: #C6C2DE;
+      border: 1px solid #C6C2DE;
+      cursor: default;
+    }
   }
 `;
 

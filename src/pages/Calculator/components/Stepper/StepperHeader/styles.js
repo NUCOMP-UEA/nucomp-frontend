@@ -6,12 +6,23 @@ export const Container = styled.header`
   justify-content: space-between;
   align-items: center;
   max-width: 700px;
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 10px;
+    background-color: #6e6893;
+    position: absolute;
+  }
 `;
 
 export const StepperOption = styled.button`
   width: 100px;
   height: 100px;
   border-radius: 50%;
+  z-index: 1;
 
   svg {
   }

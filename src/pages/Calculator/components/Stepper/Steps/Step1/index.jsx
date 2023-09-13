@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useRef } from "react";
 import { Container, Input as InputWrapper } from "./styles";
+import { FormValidation } from "../../../../../../utils/FormValidation.utils";
 
 const Input = (props) => (
   <InputWrapper>
@@ -17,8 +18,19 @@ export const Step1 = (props) => {
     course: "",
   });
 
+  function formIsValid() {
+    const result =
+      FormValidation.email(form.current.email) &&
+      FormValidation.registration(form.current.registration) &&
+      form.current.course.length &&
+      form.current.name.length;
+    return result;
+  }
+
   function onSubmit() {
-    props.onNext(form.current);
+    if (formIsValid()) {
+      props.onNext(form.current);
+    }
   }
   return (
     <Container>
@@ -42,21 +54,21 @@ export const Step1 = (props) => {
         <Input
           label="Email"
           placeholder="Email"
-          onChange={(payload) =>
-            (form.current.registration = payload.target.value)
-          }
+          onChange={(payload) => (form.current.email = payload.target.value)}
           type="email"
         />
         <Input
           label="Curso"
           placeholder="Curso"
-          onChange={(payload) =>
-            (form.current.registration = payload.target.value)
-          }
+          onChange={(payload) => (form.current.course = payload.target.value)}
           type="text"
         />
       </form>
-      <button onClick={onSubmit} className="button-submit">
+      <button
+        disabled={!formIsValid}
+        onClick={onSubmit}
+        className="button-submit"
+      >
         Próximo
       </button>
     </Container>
