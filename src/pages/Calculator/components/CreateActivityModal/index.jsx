@@ -7,16 +7,20 @@ import {
   Input as InputWrapper,
   CertificateInput as CertificateInputWrapper,
 } from "./styles";
+import { ToastUtils } from "../../../../utils/Toast.utils";
 
-const Input = (props) => (
-  <InputWrapper chDone={props.chDone ?? false}>
-    <label htmlFor={props.label}>{props.label}</label>
-    <div className="input-wrapper">
-      <input {...props} />
-      <span>{props.subtitle ?? ""}</span>
-    </div>
-  </InputWrapper>
-);
+const Input = (props) => {
+  const {chDone, subtitle, label, ...rest} = props
+  return (
+    <InputWrapper chDone={chDone ?? false}>
+      <label htmlFor={label}>{label}</label>
+      <div className="input-wrapper">
+        <input {...rest} />
+        <span>{subtitle ?? ""}</span>
+      </div>
+    </InputWrapper>
+  );
+};
 
 const CertificateInput = (props) => {
   const [file, setFile] = useState(null);
@@ -79,7 +83,9 @@ export const CreateActivityModal = (props) => {
 
   function onSubmit() {
     if (formIsValid()) {
-      console.log(form.current);
+      props.onSubmit(form.current)
+    } else {
+      ToastUtils.error("Preencha todo o formulário com valores válidos");
     }
   }
 
@@ -124,7 +130,7 @@ export const CreateActivityModal = (props) => {
               onChange={(payload) =>
                 (form.current.chDone = payload.target.value)
               }
-              chDone
+              chDone={true}
               type="number"
               className="ch-done"
               min={0}

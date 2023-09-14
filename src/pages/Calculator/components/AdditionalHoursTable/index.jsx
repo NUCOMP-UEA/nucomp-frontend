@@ -37,6 +37,17 @@ export const AdditionalHoursTable = () => {
     );
   }
 
+  function onSubmit(payload = {activity: "",
+  institution: "",
+  category: "",
+  acting: "",
+  date: new Date(),
+  chDone: 0,
+  file: new File()}) {
+    console.log(payload)
+    setShowCreateActivityModal(false)
+  }
+
   return (
     <Container>
       <AdditionalHeader>
@@ -70,6 +81,7 @@ export const AdditionalHoursTable = () => {
       {showCreateActivityModal ? (
         <CreateActivityModal
           onClose={() => setShowCreateActivityModal(false)}
+          onSubmit={onSubmit}
         />
       ) : null}
     </Container>
