@@ -1,7 +1,13 @@
 /* eslint-disable react/prop-types */
-import { useRef } from "react";
-import { Container, Input as InputWrapper } from "./styles";
+import { useRef, useState } from "react";
+import {
+  Container,
+  Input as InputWrapper,
+  CourseInput as CourseInputWrapper,
+} from "./styles";
 import { FormValidation } from "../../../../../../utils/FormValidation.utils";
+import { ToastUtils } from "../../../../../../utils/Toast.utils";
+import * as Icon from "../../../icons";
 
 const Input = (props) => (
   <InputWrapper>
@@ -9,6 +15,65 @@ const Input = (props) => (
     <input {...props} />
   </InputWrapper>
 );
+
+const CourseInput = (props) => {
+  const [showOptions, setShowOptions] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
+
+  function toggleOptions(event) {
+    event.preventDefault();
+    setShowOptions((old) => !old);
+  }
+
+  function onSelectOption(event, option) {
+    event.preventDefault();
+    setSelectedOption(option);
+    props.onSelect(option);
+    setShowOptions(false);
+  }
+  return (
+    <CourseInputWrapper>
+      <label htmlFor="">Curso</label>
+      <div className="course-input">
+        <button
+          className={`course-button ${showOptions ? "course-button-open" : ""}`}
+          onClick={toggleOptions}
+        >
+          <span>{selectedOption || " "}</span>
+          <Icon.Arrow />
+        </button>
+        {showOptions ? (
+          <div className="course-option-wrapper">
+            <button
+              onClick={(event) =>
+                onSelectOption(event, "Engenharia de Computação")
+              }
+              className="course-option"
+            >
+              Engenharia de Computação
+            </button>
+            <button
+              onClick={(event) =>
+                onSelectOption(event, "Licenciatura de Computação")
+              }
+              className="course-option"
+            >
+              Licenciatura de Computação
+            </button>
+            <button
+              onClick={(event) =>
+                onSelectOption(event, "Sistemas de Informação")
+              }
+              className="course-option"
+            >
+              Sistemas de Informação
+            </button>
+          </div>
+        ) : null}
+      </div>
+    </CourseInputWrapper>
+  );
+};
 
 export const Step1 = (props) => {
   const form = useRef({
@@ -30,6 +95,8 @@ export const Step1 = (props) => {
   function onSubmit() {
     if (formIsValid()) {
       props.onNext(form.current);
+    } else {
+      ToastUtils.error("Preencha todos os dados corretamente");
     }
   }
   return (
@@ -50,6 +117,7 @@ export const Step1 = (props) => {
           }
           type="number"
           min={0}
+          maxLength={10}
         />
         <Input
           label="Email"
@@ -57,12 +125,7 @@ export const Step1 = (props) => {
           onChange={(payload) => (form.current.email = payload.target.value)}
           type="email"
         />
-        <Input
-          label="Curso"
-          placeholder="Curso"
-          onChange={(payload) => (form.current.course = payload.target.value)}
-          type="text"
-        />
+        <CourseInput onSelect={(payload) => (form.current.course = payload)} />
       </form>
       <button
         disabled={!formIsValid}
