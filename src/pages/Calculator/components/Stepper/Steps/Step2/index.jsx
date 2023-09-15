@@ -1,18 +1,20 @@
 /* eslint-disable react/prop-types */
+import { useCalculator } from "../../../../contexts/Calculator";
 import { AdditionalHoursTable } from "../../../AdditionalHoursTable";
 import { Container, SubmitButton, Step2Header } from "./styles";
 
 export const Step2 = (props) => {
+  const { hours } = useCalculator();
   return (
     <Container>
       <Step2Header>
         <h1>RESUMO</h1>
         <div className="hours">
           <span>
-            <strong>140h</strong> lancadas
+            <strong>{hours.released}h</strong> lancadas
           </span>
           <span>
-            <strong>308h</strong> lancadas
+            <strong>{hours.done}h</strong> cumpridas
           </span>
         </div>
       </Step2Header>
