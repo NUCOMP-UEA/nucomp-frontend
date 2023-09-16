@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import { createContext, useContext, useState } from "react";
 import { rowsMock } from "../constants/Rows";
+import { api } from "../../../utils/Request.utils";
 
 export const CalculatorContext = createContext({
   hours: {
@@ -15,11 +16,15 @@ export const CalculatorContext = createContext({
     totalItems: 0,
   },
   allTableChecked: false,
+  categories: [],
   nextPage: () => null,
   previousPage: () => null,
   deleteActivities: () => null,
   onCheckRow: (index = 0, payload = false) => null,
   onSelectAllTable: (payload = false) => null,
+  setStudentId: (id = "") => null,
+  setCategories: (cateogires = []) => null,
+  fetchActivities: () => null,
 });
 
 export const CalculatorProvider = (props) => {
@@ -30,7 +35,9 @@ export const CalculatorProvider = (props) => {
   });
   const [hours, setHours] = useState({ released: 0, done: 0 });
   const [allTableChecked, setAllTableChecked] = useState(false);
-  const [activities, setActivities] = useState(rowsMock);
+  const [activities, setActivities] = useState([]);
+  const [studentId, setStudentId] = useState("64fa42357c1f510fd07fb49c");
+  const [categories, setCategories] = useState([""]);
 
   function onCheckRow(index = 0, payload = false) {
     setActivities((old) =>
@@ -64,6 +71,17 @@ export const CalculatorProvider = (props) => {
     console.log(activities);
   }
 
+  async function fetchActivities() {
+    const result = (await api.get(`/activity/${studentId}`)).data;
+    setHours({
+      released: result.totalPostedWorkload,
+      done: result.totalAccomplishedWorkload,
+    });
+    setActivities(
+      result.activities.map((activity) => ({ ...activity, isChecked: false }))
+    );
+  }
+
   return (
     <CalculatorContext.Provider
       value={{
@@ -76,6 +94,10 @@ export const CalculatorProvider = (props) => {
         allTableChecked,
         onCheckRow,
         onSelectAllTable,
+        setStudentId,
+        fetchActivities,
+        setCategories,
+        categories
       }}
     >
       {props.children}

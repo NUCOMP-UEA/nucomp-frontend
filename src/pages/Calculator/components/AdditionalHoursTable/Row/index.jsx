@@ -1,12 +1,16 @@
 /* eslint-disable react/prop-types */
+import { useCalculator } from "../../../contexts/Calculator";
 import { ButtonCheck } from "../ButtonCheck";
 import { Container } from "./styled";
 
 export const Row = (props) => {
+  const { categories } = useCalculator();
   return (
     <Container>
       {props.rows.map((row, index) => {
-        const formatedDate = new Intl.DateTimeFormat("pt-BR").format(row.date);
+        const formatedDate = new Intl.DateTimeFormat("pt-BR").format(
+          new Date(row.endDate)
+        );
         return (
           <div className="row" key={index}>
             <div
@@ -21,11 +25,13 @@ export const Row = (props) => {
             />
             <span className="item">{row.activity}</span>
             <span className="item">{row.institution}</span>
-            <span className="item">{row.category}</span>
-            <span className="item">{row.acting}</span>
+            <span className="item">
+              {categories.find((c) => c._id === row.category)}
+            </span>
+            <span className="item">{row.area}</span>
             <span className="item">{formatedDate}</span>
-            <span className="item">{row.chDone}</span>
-            <span className="item">{row.chUp}</span>
+            <span className="item">{row.accomplishedWorkload}</span>
+            <span className="item">{row.postedWorkload}</span>
             <span className="item"></span>
           </div>
         );

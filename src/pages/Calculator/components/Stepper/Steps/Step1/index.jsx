@@ -9,6 +9,12 @@ import { FormValidation } from "../../../../../../utils/FormValidation.utils";
 import { ToastUtils } from "../../../../../../utils/Toast.utils";
 import * as Icon from "../../../icons";
 
+const categories = {
+  LIC: "Licenciatura de Computação",
+  SI: "Sistemas de Informação",
+  ECP: "Engenharia de Computação",
+};
+
 const Input = (props) => (
   <InputWrapper>
     <label htmlFor={props.label}>{props.label}</label>
@@ -39,31 +45,25 @@ const CourseInput = (props) => {
           className={`course-button ${showOptions ? "course-button-open" : ""}`}
           onClick={toggleOptions}
         >
-          <span>{selectedOption || " "}</span>
+          <span>{categories[selectedOption] || " "}</span>
           <Icon.Arrow />
         </button>
         {showOptions ? (
           <div className="course-option-wrapper">
             <button
-              onClick={(event) =>
-                onSelectOption(event, "Engenharia de Computação")
-              }
+              onClick={(event) => onSelectOption(event, "ECP")}
               className="course-option"
             >
               Engenharia de Computação
             </button>
             <button
-              onClick={(event) =>
-                onSelectOption(event, "Licenciatura de Computação")
-              }
+              onClick={(event) => onSelectOption(event, "LIC")}
               className="course-option"
             >
               Licenciatura de Computação
             </button>
             <button
-              onClick={(event) =>
-                onSelectOption(event, "Sistemas de Informação")
-              }
+              onClick={(event) => onSelectOption(event, "SI")}
               className="course-option"
             >
               Sistemas de Informação

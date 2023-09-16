@@ -1,10 +1,16 @@
 /* eslint-disable react/prop-types */
+import { useEffect } from "react";
 import { useCalculator } from "../../../../contexts/Calculator";
 import { AdditionalHoursTable } from "../../../AdditionalHoursTable";
 import { Container, SubmitButton, Step2Header } from "./styles";
 
 export const Step2 = (props) => {
-  const { hours } = useCalculator();
+  const { hours, fetchActivities } = useCalculator();
+
+  useEffect(() => {
+    fetchActivities();
+  }, [fetchActivities]);
+
   return (
     <Container>
       <Step2Header>
