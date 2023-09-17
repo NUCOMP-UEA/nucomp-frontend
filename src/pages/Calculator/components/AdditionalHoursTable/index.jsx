@@ -8,10 +8,18 @@ import { Pagination } from "../Pagination";
 import { CreateActivityModal } from "../CreateActivityModal";
 import { useCalculator } from "../../contexts/Calculator";
 import { DeleteActivityModal } from "../DeleteActivityModal";
+import { ToastUtils } from "../../../../utils/Toast.utils.js";
 
 export const AdditionalHoursTable = () => {
-  const { activities, allTableChecked, onSelectAllTable, onCheckRow } =
-    useCalculator();
+  const {
+    activities,
+    allTableChecked,
+    onSelectAllTable,
+    onCheckRow,
+    postActicity,
+    fetchActivities,
+    deleteActivities,
+  } = useCalculator();
 
   const [showCreateActivityModal, setShowCreateActivityModal] = useState(false);
   const [showDeleteActivityModal, setShowDeleteActivityModal] = useState(false);
@@ -20,25 +28,34 @@ export const AdditionalHoursTable = () => {
     return activities.some((row) => row.isChecked);
   }, [activities]);
 
-  function onSubmit(
+  async function onSubmit(
     payload = {
       activity: "",
       institution: "",
       category: "",
       acting: "",
-      date: new Date(),
+      date: "",
       chDone: 0,
       file: new File(),
     }
   ) {
-    console.log(payload);
+    try {
+      await postActicity(payload);
+      ToastUtils.success("Atividade adicionada com sucesso");
+      await fetchActivities();
+    } catch (err) {
+      ToastUtils.error("Não foi possível salvar a atividade");
+    }
     setShowCreateActivityModal(false);
   }
 
-  function onDelete() {
+  async function onDelete() {
     const selectedActivities = activities.filter(
       (activity) => activity.isChecked
     );
+    await deleteActivities(selectedActivities);
+    await fetchActivities();
+    setShowDeleteActivityModal(false);
     console.log(selectedActivities);
   }
 
@@ -66,12 +83,15 @@ export const AdditionalHoursTable = () => {
         <span className="head">Data</span>
         <span className="head">CH Cumprida</span>
         <span className="head">CH a lançar</span>
-        <span className="trash" onClick={() => setShowDeleteActivityModal(true)}>
+        <span
+          className="trash"
+          onClick={() => setShowDeleteActivityModal(true)}
+        >
           {(allTableChecked || atLeastOneRowSelected) && <Icon.Trash />}
         </span>
       </TableHeader>
       <Row rows={activities} onClickCheck={onCheckRow} />
-      <Pagination firstItem={1} lastItem={10} totalItems={230} />
+      <Pagination />
       {showCreateActivityModal ? (
         <CreateActivityModal
           onClose={() => setShowCreateActivityModal(false)}

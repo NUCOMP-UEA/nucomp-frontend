@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { createContext, useContext, useState } from "react";
-import { rowsMock } from "../constants/Rows";
 import { api } from "../../../utils/Request.utils";
 import request from "../../../../request.json";
+import { ToastUtils } from "../../../utils/Toast.utils";
 
 export const CalculatorContext = createContext({
   hours: {
@@ -26,6 +26,8 @@ export const CalculatorContext = createContext({
   setStudentId: (id = "") => null,
   setCategories: (cateogires = []) => null,
   fetchActivities: () => null,
+  postActicity: (payload) => null,
+  submitActivities: () => null,
 });
 
 export const CalculatorProvider = (props) => {
@@ -33,11 +35,12 @@ export const CalculatorProvider = (props) => {
     firstItem: 0,
     lastItem: 0,
     totalItems: 0,
+    currentPage: 1,
   });
   const [hours, setHours] = useState({ released: 0, done: 0 });
   const [allTableChecked, setAllTableChecked] = useState(false);
   const [activities, setActivities] = useState([]);
-  const [studentId, setStudentId] = useState("64fa42357c1f510fd07fb49c");
+  const [studentId, setStudentId] = useState("");
   const [categories, setCategories] = useState(request["get:/activity/type/"]);
 
   function onCheckRow(index = 0, payload = false) {
@@ -64,25 +67,75 @@ export const CalculatorProvider = (props) => {
     console.log("nextPage");
   }
 
-  function previousPage() {
-    console.log("previousPage");
+  async function deleteActivities(activities = []) {
+    try {
+      for (const activity of activities) {
+        await api.delete(`/activity/${studentId}/${activity._id}`);
+      }
+    } catch {
+      ToastUtils.error(
+        "Não foi possível deletar todas as atividades selecionadas"
+      );
+    }
   }
 
-  function deleteActivities(activities = []) {
-    console.log("deleteActivities");
-    console.log(activities);
+  async function postActicity(payload) {
+    const body = {
+      accomplishedWorkload: Number(payload.chDone),
+      activity: payload.activity,
+      area: payload.acting,
+      category: payload.category,
+      endDate: payload.date,
+      institution: payload.institution,
+      periods: 1,
+      startDate: payload.date,
+      student: studentId,
+    };
+    const result = (await api.post("/activity/", body)).data;
+    console.log(payload);
+    const formData = new FormData();
+    formData.append("certificate", payload.file);
+    await api.post(
+      `/activity/certificate/${studentId}/${result._id}`,
+      formData
+    );
   }
 
   async function fetchActivities() {
-    // const result = (await api.get(`/activity/${studentId}`)).data;
-    const result = request["get:/activity/{student_id}"];
+    const result = (
+      await api.get(
+        `/activity/${studentId}?currentPage=${pagination.currentPage}&pageSize=10`
+      )
+    ).data;
+    // const result = request["get:/activity/{student_id}"];
     setHours({
       released: result.totalPostedWorkload,
       done: result.totalAccomplishedWorkload,
     });
+    setPagination((old) => ({
+      currentPage: old.currentPage,
+      totalItems: result.totalActivities,
+      firstItem: result.totalActivities ? 10 * (old.currentPage - 1) + 1 : 0,
+      lastItem:
+        old.currentPage * 10 > result.totalActivities
+          ? result.totalActivities
+          : 10 * old.currentPage + 1,
+    }));
     setActivities(
       result.activities.map((activity) => ({ ...activity, isChecked: false }))
     );
+  }
+
+  async function submitActivities() {
+    await api.post(`/submit/${studentId}`);
+  }
+  function previousPage() {
+    if (pagination.currentPage - 1 < 1) {
+      return;
+    }
+    if (pagination.currentPage * 10 > pagination.totalItems) {
+      return;
+    }
   }
 
   return (
@@ -101,6 +154,8 @@ export const CalculatorProvider = (props) => {
         fetchActivities,
         setCategories,
         categories,
+        postActicity,
+        submitActivities,
       }}
     >
       {props.children}

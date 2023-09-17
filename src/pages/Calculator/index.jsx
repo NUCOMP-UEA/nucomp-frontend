@@ -5,7 +5,7 @@ import { Stepper } from "./components/Stepper";
 import { CalculatorProvider } from "./contexts/Calculator";
 
 const Calculator = () => {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(0);
 
   return (
     <Container>

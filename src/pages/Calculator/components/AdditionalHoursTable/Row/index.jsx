@@ -27,7 +27,7 @@ export const Row = (props) => {
             <span className="item">{row.activity}</span>
             <span className="item">{row.institution}</span>
             <span className="item">
-              {categories.find((c) => c._id === row.category).idAndDimension}
+              {categories.find((c) => c._id === row.category)?.idAndDimension ?? '' } 
             </span>
             <span className="item">{row.area}</span>
             <span className="item">{formatedDate}</span>
