@@ -28,7 +28,7 @@ export const AdditionalHeader = styled.header`
 export const TableHeader = styled.header`
   width: 100%;
   display: grid;
-  grid-template-columns: 5px 20px 120px 120px 120px 120px 120px 1fr 1fr 30px;
+  grid-template-columns: 5px 20px 2fr 1fr 1fr 1fr 120px 100px 100px 30px;
   grid-template-rows: 1fr;
   gap: 16px;
   background-color: #8b83ba;

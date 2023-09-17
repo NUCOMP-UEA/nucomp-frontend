@@ -6,11 +6,13 @@ import {
   Content,
   Input as InputWrapper,
   CertificateInput as CertificateInputWrapper,
+  CategoriesInput as CategoriesInputWrapper,
 } from "./styles";
 import { ToastUtils } from "../../../../utils/Toast.utils";
+import { useCalculator } from "../../contexts/Calculator";
 
 const Input = (props) => {
-  const {chDone, subtitle, label, ...rest} = props
+  const { chDone, subtitle, label, ...rest } = props;
   return (
     <InputWrapper chDone={chDone ?? false}>
       <label htmlFor={label}>{label}</label>
@@ -19,6 +21,54 @@ const Input = (props) => {
         <span>{subtitle ?? ""}</span>
       </div>
     </InputWrapper>
+  );
+};
+
+const CategoriesInput = (props) => {
+  const { categories } = useCalculator();
+  const [showOptions, setShowOptions] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  function toggleOptions(event) {
+    event.preventDefault();
+    setShowOptions((old) => !old);
+  }
+
+  function onSelectOption(event, option) {
+    event.preventDefault();
+    setSelectedOption(option);
+    props.onSelect(option._id);
+    setShowOptions(false);
+  }
+  return (
+    <CategoriesInputWrapper>
+      <label htmlFor="">Curso</label>
+      <div className="course-input">
+        <button
+          className={`course-button ${showOptions ? "course-button-open" : ""}`}
+          onClick={toggleOptions}
+        >
+          <span>{ selectedOption?.idAndDimension ?? " "}</span>
+          <Icon.Arrow />
+        </button>
+        {showOptions ? (
+          <div className="course-option-wrapper">
+            {categories.map((c, index) => (
+              <button
+                onClick={(event) => onSelectOption(event, c)}
+                className="course-option"
+                key={index}
+              >
+                {c.idAndDimension}
+              </button>
+            ))}
+          </div>
+        ) : null}
+        <span className="description">
+          {selectedOption?.activityType ?? ' '}
+        </span>
+      </div>
+    </CategoriesInputWrapper>
   );
 };
 
@@ -59,7 +109,7 @@ export const CreateActivityModal = (props) => {
   const form = useRef({
     activity: "",
     institution: "",
-    category: "",
+    category: null,
     acting: "",
     date: null,
     chDone: 0,
@@ -81,9 +131,14 @@ export const CreateActivityModal = (props) => {
     return result;
   }
 
+  function selectCategory(payload) {
+    form.current.category = payload;
+  }
+
   function onSubmit() {
+    console.log(form.current)
     if (formIsValid()) {
-      props.onSubmit(form.current)
+      props.onSubmit(form.current);
     } else {
       ToastUtils.error("Preencha todo o formulário com valores válidos");
     }
@@ -135,7 +190,7 @@ export const CreateActivityModal = (props) => {
               className="ch-done"
               min={0}
             />
-            <Input
+            {/* <Input
               label="Categoria"
               placeholder="Categoria 1"
               subtitle="Campo para selecionar a categoria que a atividade pertence"
@@ -143,7 +198,8 @@ export const CreateActivityModal = (props) => {
                 (form.current.category = payload.target.value)
               }
               type="text"
-            />
+            /> */}
+            <CategoriesInput onSelect={selectCategory} />
             <CertificateInput
               onChange={(payload) => (form.current.file = payload)}
             />

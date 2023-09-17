@@ -9,7 +9,7 @@ export const Step2 = (props) => {
 
   useEffect(() => {
     fetchActivities();
-  }, [fetchActivities]);
+  }, []);
 
   return (
     <Container>

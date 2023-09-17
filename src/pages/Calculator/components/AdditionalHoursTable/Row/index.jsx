@@ -15,7 +15,8 @@ export const Row = (props) => {
           <div className="row" key={index}>
             <div
               style={{
-                height: "60px",
+                minHeight: "60px",
+                height: "100%",
                 backgroundColor: row.isChecked ? "#8b83ba" : "transparent",
               }}
             ></div>
@@ -26,7 +27,7 @@ export const Row = (props) => {
             <span className="item">{row.activity}</span>
             <span className="item">{row.institution}</span>
             <span className="item">
-              {categories.find((c) => c._id === row.category)}
+              {categories.find((c) => c._id === row.category).idAndDimension}
             </span>
             <span className="item">{row.area}</span>
             <span className="item">{formatedDate}</span>

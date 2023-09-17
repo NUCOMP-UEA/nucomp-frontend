@@ -15,7 +15,7 @@ export const Container = styled.div`
 
   > .content {
     width: 80%;
-    max-height: 60vh;
+    max-height: 75vh;
     overflow-x: hidden;
     overflow-y: auto;
   }
@@ -219,6 +219,112 @@ export const CertificateInput = styled.div`
     }
 
     span {
+      color: #6d5bd0;
+      font-family: Inter;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 100%; /* 14px */
+    }
+  }
+`;
+
+export const CategoriesInput = styled.div`
+  display: flex;
+  width: 100%;
+  gap: 8px;
+
+  label {
+    color: #6d5bd0;
+    text-align: right;
+    font-family: Inter;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 1.1px;
+    width: 200px;
+  }
+  .course-input {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    button.course-button {
+      padding: 16px;
+      padding-right: 24px;
+      border-radius: 8px;
+      border: 1px solid #6e6893;
+      background: #fff;
+      box-shadow: 0px 0px 4px 0px rgba(23, 25, 28, 0.05);
+      position: relative;
+      color: #000;
+      font-family: Inter;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      position: relative;
+      width: 100%;
+      height: 46.4px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      span {
+        max-width: 90%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      svg {
+        position: absolute;
+        right: 8px;
+      }
+
+      &.course-button-open {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-bottom: none;
+        svg {
+          transform: rotateZ(180deg);
+        }
+      }
+    }
+
+    .course-option-wrapper {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      position: absolute;
+      top: 46px;
+      max-height: 120px;
+      overflow: auto;
+      border-bottom: 1px solid #6e6893;
+      border-radius: 0px 0px 8px 8px;
+
+      button.course-option {
+        cursor: pointer;
+        width: 100%;
+        padding: 8px;
+        border: none;
+        border-top: 1px solid #000;
+        border-left: 1px solid #6e6893;
+        border-right: 1px solid #6e6893;
+        background: #fff;
+
+        /* &:last-child {
+          border-radius: 0px 0px 8px 8px;
+          border: 1px solid #6e6893;
+          border-top: 1px solid #000;
+        } */
+      }
+    }
+
+    span.description {
       color: #6d5bd0;
       font-family: Inter;
       font-size: 14px;

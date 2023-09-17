@@ -7,12 +7,14 @@ import { AdditionalSearch } from "./AdditionalSearch";
 import { Pagination } from "../Pagination";
 import { CreateActivityModal } from "../CreateActivityModal";
 import { useCalculator } from "../../contexts/Calculator";
+import { DeleteActivityModal } from "../DeleteActivityModal";
 
 export const AdditionalHoursTable = () => {
   const { activities, allTableChecked, onSelectAllTable, onCheckRow } =
     useCalculator();
 
   const [showCreateActivityModal, setShowCreateActivityModal] = useState(false);
+  const [showDeleteActivityModal, setShowDeleteActivityModal] = useState(false);
 
   const atLeastOneRowSelected = useMemo(() => {
     return activities.some((row) => row.isChecked);
@@ -31,6 +33,13 @@ export const AdditionalHoursTable = () => {
   ) {
     console.log(payload);
     setShowCreateActivityModal(false);
+  }
+
+  function onDelete() {
+    const selectedActivities = activities.filter(
+      (activity) => activity.isChecked
+    );
+    console.log(selectedActivities);
   }
 
   return (
@@ -57,7 +66,7 @@ export const AdditionalHoursTable = () => {
         <span className="head">Data</span>
         <span className="head">CH Cumprida</span>
         <span className="head">CH a lançar</span>
-        <span className="trash">
+        <span className="trash" onClick={() => setShowDeleteActivityModal(true)}>
           {(allTableChecked || atLeastOneRowSelected) && <Icon.Trash />}
         </span>
       </TableHeader>
@@ -67,6 +76,12 @@ export const AdditionalHoursTable = () => {
         <CreateActivityModal
           onClose={() => setShowCreateActivityModal(false)}
           onSubmit={onSubmit}
+        />
+      ) : null}
+      {showDeleteActivityModal ? (
+        <DeleteActivityModal
+          onClose={() => setShowDeleteActivityModal(false)}
+          onDelete={onDelete}
         />
       ) : null}
     </Container>

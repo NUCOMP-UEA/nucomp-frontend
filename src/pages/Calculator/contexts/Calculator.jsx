@@ -3,6 +3,7 @@
 import { createContext, useContext, useState } from "react";
 import { rowsMock } from "../constants/Rows";
 import { api } from "../../../utils/Request.utils";
+import request from "../../../../request.json";
 
 export const CalculatorContext = createContext({
   hours: {
@@ -37,7 +38,7 @@ export const CalculatorProvider = (props) => {
   const [allTableChecked, setAllTableChecked] = useState(false);
   const [activities, setActivities] = useState([]);
   const [studentId, setStudentId] = useState("64fa42357c1f510fd07fb49c");
-  const [categories, setCategories] = useState([""]);
+  const [categories, setCategories] = useState(request["get:/activity/type/"]);
 
   function onCheckRow(index = 0, payload = false) {
     setActivities((old) =>
@@ -48,6 +49,7 @@ export const CalculatorProvider = (props) => {
         return e;
       })
     );
+    if (!payload) setAllTableChecked(false);
   }
   function onSelectAllTable(payload = false) {
     setAllTableChecked(payload);
@@ -72,7 +74,8 @@ export const CalculatorProvider = (props) => {
   }
 
   async function fetchActivities() {
-    const result = (await api.get(`/activity/${studentId}`)).data;
+    // const result = (await api.get(`/activity/${studentId}`)).data;
+    const result = request["get:/activity/{student_id}"];
     setHours({
       released: result.totalPostedWorkload,
       done: result.totalAccomplishedWorkload,
@@ -97,7 +100,7 @@ export const CalculatorProvider = (props) => {
         setStudentId,
         fetchActivities,
         setCategories,
-        categories
+        categories,
       }}
     >
       {props.children}
