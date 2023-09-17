@@ -36,6 +36,7 @@ export const CalculatorProvider = (props) => {
     lastItem: 0,
     totalItems: 0,
     currentPage: 1,
+    totalPages: 1,
   });
   const [hours, setHours] = useState({ released: 0, done: 0 });
   const [allTableChecked, setAllTableChecked] = useState(false);
@@ -63,10 +64,6 @@ export const CalculatorProvider = (props) => {
     );
   }
 
-  function nextPage() {
-    console.log("nextPage");
-  }
-
   async function deleteActivities(activities = []) {
     try {
       for (const activity of activities) {
@@ -92,7 +89,6 @@ export const CalculatorProvider = (props) => {
       student: studentId,
     };
     const result = (await api.post("/activity/", body)).data;
-    console.log(payload);
     const formData = new FormData();
     formData.append("certificate", payload.file);
     await api.post(
@@ -115,6 +111,7 @@ export const CalculatorProvider = (props) => {
     setPagination((old) => ({
       currentPage: old.currentPage,
       totalItems: result.totalActivities,
+      totalPages: Math.ceil(result.totalActivities / 10),
       firstItem: result.totalActivities ? 10 * (old.currentPage - 1) + 1 : 0,
       lastItem:
         old.currentPage * 10 > result.totalActivities
@@ -133,9 +130,22 @@ export const CalculatorProvider = (props) => {
     if (pagination.currentPage - 1 < 1) {
       return;
     }
-    if (pagination.currentPage * 10 > pagination.totalItems) {
+    setPagination((old) => ({
+      ...old,
+      currentPage: old.currentPage - 1,
+    }));
+    fetchActivities();
+  }
+
+  function nextPage() {
+    if (pagination.currentPage + 1 > pagination.totalPages) {
       return;
     }
+    setPagination((old) => ({
+      ...old,
+      currentPage: old.currentPage + 1,
+    }));
+    fetchActivities();
   }
 
   return (

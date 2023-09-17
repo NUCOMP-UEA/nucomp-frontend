@@ -136,7 +136,6 @@ export const CreateActivityModal = (props) => {
   }
 
   function onSubmit() {
-    console.log(form.current)
     if (formIsValid()) {
       props.onSubmit(form.current);
     } else {

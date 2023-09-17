@@ -56,7 +56,6 @@ export const AdditionalHoursTable = () => {
     await deleteActivities(selectedActivities);
     await fetchActivities();
     setShowDeleteActivityModal(false);
-    console.log(selectedActivities);
   }
 
   return (
