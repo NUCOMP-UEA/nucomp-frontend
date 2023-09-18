@@ -110,6 +110,11 @@ export const SidebarData = [
         path: "/about-us/aim",
         icon: <AiOutlineClose />,
       },
+      {
+        title: "Calculadora",
+        path: "/calculator",
+        icon: <AiOutlineClose />,
+      },
     ],
   },
   {

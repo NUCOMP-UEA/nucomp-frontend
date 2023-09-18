@@ -1,0 +1,217 @@
+{
+  "get:/activity/type/": [
+    {
+      "_id": "64e7bd6bae21606426a1182d",
+      "idAndDimension": "1 - Ensino",
+      "activityType": "Instrução de oficinas, palestras ou cursos de capacitação certificado pela entidade organizadora."
+    },
+    {
+      "_id": "64e7be26ae21606426a1182e",
+      "idAndDimension": "2 - Ensino",
+      "activityType": "Participação em projeto de Monitoria junto à coordenação dos cursos da Escola Superior de Tecnologia, como Monitor voluntário ou Bolsista com relatório final aprovado e certificação."
+    },
+    {
+      "_id": "64e7be7bae21606426a1182f",
+      "idAndDimension": "3 - Ensino",
+      "activityType": "Carga horária optativa ou fora de grade excedente cursada em curso de graduação na UEA."
+    },
+    {
+      "_id": "64e7bec6ae21606426a11830",
+      "idAndDimension": "7 - Pesquisa",
+      "activityType": "Publicação de artigo completo em anais de evento internacional certificado pela instituição promotora."
+    },
+    {
+      "_id": "64e7bef1ae21606426a11831",
+      "idAndDimension": "8 - Pesquisa",
+      "activityType": "Publicação de artigo completo em anais de evento nacional certificado pela instituição promotora."
+    },
+    {
+      "_id": "64e7bf17ae21606426a11832",
+      "idAndDimension": "9 - Pesquisa",
+      "activityType": "Publicação de artigo completo em anais de evento regional ou local certificado pela instituição promotora."
+    },
+    {
+      "_id": "64e7bf3dae21606426a11833",
+      "idAndDimension": "10 - Pesquisa",
+      "activityType": "Publicação de artigo em periódico indexado pela CAPES comprovado através de cópia do trabalho publicado bem como da capa do Periódico."
+    },
+    {
+      "_id": "64e7c25bae21606426a11834",
+      "idAndDimension": "10 - Pesquisa",
+      "activityType": "Publicação de capítulo de livro."
+    },
+    {
+      "_id": "64e7c286ae21606426a11835",
+      "idAndDimension": "11 - Pesquisa",
+      "activityType": "Publicação de pôster/resumo."
+    },
+    {
+      "_id": "64e7c2adae21606426a11836",
+      "idAndDimension": "12 - Pesquisa",
+      "activityType": "Participação em Projeto de Iniciação Científica como aluno bolsista ou voluntário com certificação expedida pela Pró-Reitoria de Pós-Graduação e Pesquisa da IES."
+    },
+    {
+      "_id": "64e7c31cae21606426a11838",
+      "idAndDimension": "14 - Pesquisa",
+      "activityType": "Participação em eventos científicos ligados à área objeto do curso."
+    },
+    {
+      "_id": "64e7c3f1ae21606426a11839",
+      "idAndDimension": "17 - Extensao",
+      "activityType": "Participação em eventos técnico/acadêmicos ligados à área objeto do curso."
+    },
+    {
+      "_id": "64e7c426ae21606426a1183a",
+      "idAndDimension": "18 - Extensao",
+      "activityType": "Participação em cursos ou minicursos de formação profissional em área afim ao curso."
+    },
+    {
+      "_id": "64e7c441ae21606426a1183b",
+      "idAndDimension": "19 - Extensao",
+      "activityType": "Participação em cursos de línguas extensivos ou intensivos."
+    },
+    {
+      "_id": "64e7c4abae21606426a1183c",
+      "idAndDimension": "20 - Extensao",
+      "activityType": "Participação como ouvinte de palestras na área."
+    },
+    {
+      "_id": "64e7c4daae21606426a1183d",
+      "idAndDimension": "22 - Extensao",
+      "activityType": "Visita técnica promovida pela IES."
+    },
+    {
+      "_id": "64e7c505ae21606426a1183e",
+      "idAndDimension": "23 - Extensao",
+      "activityType": "Participação em Projeto Institucional de Extensão desenvolvido como aluno bolsista ou voluntário, certificado pela PROEXT/UEA."
+    },
+    {
+      "_id": "64e7c531ae21606426a1183f",
+      "idAndDimension": "24 - Extensao",
+      "activityType": "Participação em programas de intercâmbios institucionais (duração mínima de um mês)."
+    },
+    {
+      "_id": "64e7c550ae21606426a11840",
+      "idAndDimension": "25 - Extensao",
+      "activityType": "Participação em competição científica ou tecnológica."
+    },
+    {
+      "_id": "64e7c5b0ae21606426a11841",
+      "idAndDimension": "27 - Extensao",
+      "activityType": "Participação como ouvinte em banca de trabalho de conclusão de curso de graduação ou pós-graduação, ou palestras fora da área da computação."
+    },
+    {
+      "_id": "64e7c5cdae21606426a11842",
+      "idAndDimension": "28 - Extensao",
+      "activityType": "Participação em atividades culturais com evidência nominal (comprovantes)."
+    },
+    {
+      "_id": "64e7c5fcae21606426a11843",
+      "idAndDimension": "30 - Outros",
+      "activityType": "Doação de sangue, plaquetas e afins."
+    },
+    {
+      "_id": "64e7c61bae21606426a11844",
+      "idAndDimension": "31 - Outros",
+      "activityType": "Participação em evento beneficente, campanhas solidárias ou atividades assistenciais."
+    },
+    {
+      "_id": "64e7c638ae21606426a11845",
+      "idAndDimension": "32 - Outros",
+      "activityType": "Doações diversas para Instituição Filantrópica com recibo da Instituição e/ou evidências (declaração da instituição, fotos)."
+    },
+    {
+      "_id": "64ee4e7f1328658cee383508",
+      "idAndDimension": "13 - Pesquisa",
+      "activityType": "Participação em projetos multidisciplinares sob a orientação de um professor do curso. Ex: P&DI, projetos independentes, etc."
+    },
+    {
+      "_id": "64ee4f291328658cee383509",
+      "idAndDimension": "15 - Extensão",
+      "activityType": "Participação em tutoria como aluno bolsista ou voluntário com certificação expedida pela Pró-Reitoria de Extensão da IES."
+    },
+    {
+      "_id": "64ee4ffe1328658cee38350a",
+      "idAndDimension": "16 - Extensão",
+      "activityType": "Participação como membro de equipe organizadora de eventos acadêmicos."
+    },
+    {
+      "_id": "64ee50b41328658cee38350b",
+      "idAndDimension": "21 - Extensão",
+      "activityType": "Estágio não obrigatório vinculado à área do curso, com Termo de Compromisso de Estágio (TCE) e declaração da empresa atestando a conclusão."
+    },
+    {
+      "_id": "64ee50ec1328658cee38350c",
+      "idAndDimension": "26 - Extensão",
+      "activityType": "Participação em Empresas Júnior, incubadoras ou outros mecanismos de empreendedorismo e inovação."
+    },
+    {
+      "_id": "64ee512b1328658cee38350d",
+      "idAndDimension": "29 - Outros",
+      "activityType": "Representação discente de turma, ou em colegiados, comissões, representação desportiva, cultural ou comitês acadêmicos com declaração emitida pelo gestor imediato."
+    }
+  ],
+  "post:/activity/type/": {
+    "activityType": "Instrução de oficinas, palestras ou cursos de capacitação certificado pela entidade organizadora.",
+    "hours": 0,
+    "idAndDimension": "1 - Ensino",
+    "isPeriodRequired": false,
+    "limit": 40,
+    "multiplyingFactor": 2
+  },
+  "get:/activity/{student_id}": {
+    "totalActivities": 3,
+    "activities": [
+      {
+        "_id": "64fe26d6ebd7a85db3d9b509",
+        "student": "64fa42357c1f510fd07fb49c",
+        "activity": "Treinamento para a Implantação do Sistema de Gerenciamento de Faturas",
+        "institution": "UEA/EST",
+        "category": "64e7bd6bae21606426a1182d",
+        "area": "Ministrante",
+        "startDate": "2021-03-22",
+        "endDate": "2021-03-26",
+        "accomplishedWorkload": 20,
+        "postedWorkload": 40
+      },
+      {
+        "_id": "64fe2858df1250cc374da7f9",
+        "student": "64fa42357c1f510fd07fb49c",
+        "activity": "Monitoria em Probabilidade e Estatística",
+        "institution": "UEA/EST",
+        "category": "64e7be26ae21606426a1182e",
+        "area": "Monitor Remunerado",
+        "startDate": "2020-08-01",
+        "endDate": "2020-11-28",
+        "accomplishedWorkload": 108,
+        "postedWorkload": 20
+      },
+      {
+        "_id": "64fe29492afa3aba7da5aca8",
+        "student": "64fa42357c1f510fd07fb49c",
+        "activity": "Projeto Hefesto",
+        "institution": "UEA/EST",
+        "category": "64e7c426ae21606426a1183a",
+        "area": "Aluna",
+        "startDate": "2020-07-22",
+        "endDate": "2020-10-19",
+        "accomplishedWorkload": 180,
+        "postedWorkload": 80
+      }
+    ],
+    "totalPostedWorkload": 140,
+    "totalAccomplishedWorkload": 308
+  },
+  "post:/activity/": {
+    "accomplishedWorkload": 10,
+    "activity": "Activity 1",
+    "area": "Area 1",
+    "category": "64e5278b82fc786f979af7f0",
+    "endDate": "2023-09-16",
+    "institution": "Institution 1",
+    "periods": 1,
+    "startDate": "2023-09-15",
+    "student": "64e5278b82fc786f979af7f0"
+  }, 
+  "post:/activity/certificate/{student_id}/{activity_id}": "no body da requisicao vai enviar o blob na _certificate_"
+}
